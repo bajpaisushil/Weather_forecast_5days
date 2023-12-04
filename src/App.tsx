@@ -61,7 +61,6 @@ const WeatherApp: React.FC = () => {
       setSunrise(response.data.city.sunrise);
       setSunset(response.data.city.sunset);
 
-      const selectedDate = new Date(startDate);
       const filteredForecast = response.data.list
         .filter((item: any) => {
           const date = new Date(item.dt_txt);
@@ -70,7 +69,7 @@ const WeatherApp: React.FC = () => {
           return (
             hours === 6 &&
             !forecast.find((day) => day.dt === item.dt) &&
-            date >= new Date(startDate)+1
+            date >= new Date(startDate)
           );
         })
         .slice(0, 5);
